@@ -42,7 +42,7 @@ if (!event.target.matches('.dropbtn')) {
 
 
 // bouncing balls around screen
-const container = document.querySelector('.maincontainer');
+const container = document.querySelector('body');
 const balls = document.querySelectorAll('.ball');
 const containerWidth = container.clientWidth;
 const containerHeight = container.clientHeight;

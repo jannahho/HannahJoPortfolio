@@ -1,0 +1,276 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost&family=Kanit:wght@300;400&family=Poppins&family=Unbounded:wght@300;500&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Gloock&family=Montserrat:wght@500&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Jost&family=Kanit:wght@300;400&family=Poppins&family=Unbounded:wght@300;500&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
+
+body{
+     background-color: #fcf5f8;
+ }
+
+.maincontainer{
+    max-width: 100vw;
+    display: grid;
+    grid-template-columns: 100vw;
+    /* grid-template-rows: 2vh 100vh 100vh 100vh; */
+    grid-template-rows: 2vh 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+    "toptext"
+    "container1"
+    "container2"
+    "container3"
+    "container4";
+    grid-gap: 10vh;
+}
+
+.toptext{
+    grid-area: toptext;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+}
+
+ .titlecontainer{
+     max-width: 100vw;
+     max-height: 100vh;
+     grid-area: container1;
+     display: grid;
+     grid-template-columns: 3fr 1fr 2fr;
+     grid-template-rows: .5fr 1.5fr 2fr;
+     grid-template-areas:
+     ". . ."
+     "title . ."
+     ". description description";
+     margin-top: -10vh;
+
+ }
+
+
+
+  .smallicons>img{
+      height: 1.5vw;
+      padding: .5vw;
+      margin-top: -.4vw;
+      margin-right: .9vw;
+      align-self: start;
+ }
+
+  .name{
+      font-size: 1.5vw;
+      color: black;
+      font-family: 'Montserrat', sans-serif;
+      align-self: start;
+      text-decoration: none;
+      margin-left: .5vw;
+ }
+
+.title{
+    grid-area: title;
+    font-size: 4.5vw;
+    font-family: 'Unbounded', cursive;
+    font-weight: lighter;
+}
+
+.subtitle{
+    grid-area: description;
+    font-size: 2vw;
+    align-self: center;
+
+}
+
+
+
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 50vw;
+  font-size: 5vw;
+  border: none;
+  outline: none;
+  background: none;
+  color: black;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 4px;
+  margin-bottom: -2vw;
+}
+
+.upBtn {
+  display: block;
+  position: fixed;
+  bottom: 0;
+  right: 50vw;
+  font-size: 5vw;
+  border: none;
+  outline: none;
+  background: none;
+  color: black;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 4px;
+  margin-bottom: -2vw;
+}
+
+
+.projtext{
+    font-size: 1.4vw;
+    align-self: center;
+    /* font-family: 'Jost', sans-serif; */
+    font-family: 'Unbounded', cursive;
+    font-weight: lighter;
+    line-height: 5vh;
+}
+
+.projlabel{
+    font-size: 1.8vw;
+    font-family: 'Unbounded', cursive;
+    font-weight: lighter;
+    align-self: center;
+}
+
+#project1{
+    grid-area: container2;
+    max-width: 100vw;
+    /* max-height: 100vh; */
+    display: grid;
+    grid-template-columns: 1fr 3fr 3fr 1fr;
+    grid-template-rows: 3fr 2fr 3fr 2fr;
+    grid-template-areas:
+    ". dropimage1 dropimage1 ."
+    ". droplabel1 dropdesc1  ."
+    ". dropimage2 dropimage2 ."
+    ". droplabel2 dropdesc2  .";
+    grid-gap: 4vh;
+}
+
+/* .projectpic{
+    grid-area: image;
+    width: 80vw;
+    height: 60vh;
+    justify-content: center;
+    border: 1px solid black;
+} */
+
+#dropphoto1{
+    grid-area: dropimage1;
+    width: 100%;
+    /* height: 60vh; */
+    justify-content: center;
+    /* border: 1px solid black; */
+}
+
+#dropphoto2{
+    grid-area: dropimage2;
+    width: 100%;
+    /* height: 60vh; */
+    justify-self: center;
+    align-self: start;
+    /* border: 1px solid black; */
+}
+
+#droplabel1{
+    /* height: 30vh; */
+    grid-area: droplabel1;
+    text-align: center;
+    /* align-self: center; */
+    /* font-family: 'Gloock', serif; */
+}
+
+#droplabel2{
+    /* height: 30vh; */
+    grid-area: droplabel2;
+    text-align: center;
+    /* align-self: center; */
+    /* font-family: 'Gloock', serif; */
+}
+
+#dropdesc1{
+    /* height: 30vh; */
+    align-self: center;
+    grid-area: dropdesc1;
+}
+
+#dropdesc2{
+    /* height: 30vh; */
+    align-self: center;
+    grid-area: dropdesc2;
+}
+
+
+
+
+#project2{
+    grid-area: container3;
+    max-width: 100vw;
+    /* max-height: 200vh; */
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr 1fr;
+    grid-template-rows: 60vh 30vh 40vh;
+    grid-template-areas:
+    ". figma1 figma1 ."
+    ". . figmadesc1 ."
+    ". figma2 . .";
+    grid-gap: 6vh;
+}
+
+#figma1{
+    grid-area: figma1;
+    width: 78vwvw;
+    height: 60vh;
+    justify-content: center;
+    border: 1px solid black;
+}
+
+#figma2{
+    grid-area: figma2;
+    width: 40vw;
+    height: 20vh;
+    justify-content: center;
+    border: 1px solid black;
+}
+
+#figmadesc1{
+    grid-area: figmadesc1;
+    align-self: center;
+}
+
+#project3{
+    grid-area: container4;
+    max-width: 100vw;
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr 1fr;
+    grid-template-rows: 60vh 30vh 30vh;
+    grid-template-areas:
+    ". bsi1 bsi1 ."
+    ". . bsidesc1 ."
+    ". bsi2 . .";
+    grid-gap: 6vh;
+}
+
+#bsi1{
+    grid-area: bsi1;
+    width: 78vw;
+    height: 60vh;
+    justify-content: center;
+    border: 1px solid black;
+}
+#bsi2{
+    grid-area: bsi2;
+    width: 30vw;
+    height: 30vh;
+    justify-content: center;
+    border: 1px solid black;
+}
+
+
+#bsidesc1{
+    grid-area: bsidesc1;
+}

@@ -18,7 +18,11 @@ body{
      grid-template-rows: 4vw 3vw 6vw 50vw;
     /* column-gap: .1vw;
      */
-     grid-template-areas: "titlename icons" ". ." ". subtitle" "category content"
+     grid-template-areas:
+     "toptext toptext"
+      ". ."
+      ". subtitle"
+      "category content"
     /* overflow: hidden;
      */
     /* z-index: 0;
@@ -27,28 +31,34 @@ body{
      padding-top: 2vw;
      */
 }
- .icons{
-     grid-area: icons;
-     display: flex;
-     justify-content: flex-end;
-     padding-right: 2vw;
+
+.toptext{
+    grid-area: toptext;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
 }
- .icons>img{
-     height: 2vw;
-     padding: 1vw;
+
+ .smallicons>img{
+     height: 1.5vw;
+     padding: .5vw;
+     margin-top: -.4vw;
+     margin-right: .6vw;
+     align-self: start;
 }
- .titlename{
-     grid-area: titlename;
-     font-size: 2vw;
+
+ .name{
+     font-size: 1.5vw;
      color: black;
      font-family: 'Montserrat', sans-serif;
-    /* text-align: center;
-     */
-     justify-self: center;
-     align-self: center;
-    /* padding-left: 4vw;
-     */
+     align-self: start;
+     text-decoration: none;
+      margin-left: .5vw;
 }
+
+
  #subtitle{
      grid-area: subtitle;
      font-size: 5vw;
@@ -61,6 +71,7 @@ body{
      padding-left: 1vw;
      transition: text-shadow 0.5s ease-in-out;
 }
+
  .categories{
      grid-area: category;
      display: inline-block;
