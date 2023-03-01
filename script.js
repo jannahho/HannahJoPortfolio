@@ -110,7 +110,13 @@ dragElement(document.getElementById("bluecircle"));
 
 
 
+let target = document.querySelector(".drag");
 
+function onDrag(e) {
+  // we could make them global variables instead
+  const {width, height} = window.getComputedStyle(target);
+  target.style.transform = `translate(${e.clientX - +width.replace("px", "") / 2}px, ${e.clientY - +height.replace("px", "") / 2}px)`;
+}
 
 
 function dragElement(elmnt) {
