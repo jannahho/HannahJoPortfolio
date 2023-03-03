@@ -1,9 +1,10 @@
 // define an array of text strings to cycle through
 const textArray = [
   "Loves Design",
-  "is a student",
+  "Is Researching...",
   "Wants to Bring Fun",
-  "Is Cool"
+  "Is Cool",
+  "Needfinding"
 ];
 
 // get a reference to the text element
@@ -110,15 +111,6 @@ dragElement(document.getElementById("bluecircle"));
 
 
 
-let target = document.querySelector(".drag");
-
-function onDrag(e) {
-  // we could make them global variables instead
-  const {width, height} = window.getComputedStyle(target);
-  target.style.transform = `translate(${e.clientX - +width.replace("px", "") / 2}px, ${e.clientY - +height.replace("px", "") / 2}px)`;
-}
-
-
 function dragElement(elmnt) {
     // pick up shape from anywhere inside the shape
     var pos1 = 0,
@@ -145,6 +137,7 @@ function dragElement(elmnt) {
         pos3 = e.clientX;
         pos4 = e.clientY;
         // do function when cursor is moved
+
         document.onmouseup = closeDragElement;
         document.onmousemove = elementDrag;
     }
@@ -221,8 +214,8 @@ function addShape(event) {
   const shape = document.createElement('div');
   shape.classList.add('shape');
   shape.style.backgroundColor = color;
-  shape.style.width = '50px';
-  shape.style.height = '50px';
+  shape.style.width = '4vw';
+  shape.style.height = '4vw';
   shape.style.position = 'absolute';
   shape.style.left = `${x - 25}px`;
   shape.style.top = `${y - 25}px`;
@@ -231,32 +224,32 @@ function addShape(event) {
       shape.style.borderRadius = '50%';
       break;
     case 1:
-      shape.style.borderTop = '50px solid transparent';
-      shape.style.borderRight = '25px solid ' + color;
-      shape.style.borderBottom = '50px solid transparent';
+      shape.style.borderTop = '4vw solid transparent';
+      shape.style.borderRight = '2vw solid ' + color;
+      shape.style.borderBottom = '4vw solid transparent';
       break;
     case 2:
-      shape.style.borderTop = '50px solid transparent';
-      shape.style.borderRight = '50px solid ' + color;
-      shape.style.borderBottom = '50px solid transparent';
+      shape.style.borderTop = '4vw solid transparent';
+      shape.style.borderRight = '2vw solid ' + color;
+      shape.style.borderBottom = '4vw solid transparent';
       break;
     case 3:
-      shape.style.borderTop = '50px solid ' + color;
-      shape.style.borderRight = '25px solid transparent';
-      shape.style.borderBottom = '50px solid ' + color;
-      shape.style.borderLeft = '25px solid transparent';
+      shape.style.borderTop = '4vw solid ' + color;
+      shape.style.borderRight = '2vw solid transparent';
+      shape.style.borderBottom = '4vw solid ' + color;
+      shape.style.borderLeft = '2vw solid transparent';
       break;
     case 4:
-      shape.style.borderTop = '25px solid ' + color;
-      shape.style.borderRight = '50px solid transparent';
-      shape.style.borderBottom = '25px solid ' + color;
+      shape.style.borderTop = '2vw solid ' + color;
+      shape.style.borderRight = '4vw solid transparent';
+      shape.style.borderBottom = '2vw solid ' + color;
       shape.style.borderLeft = '50px solid transparent';
       break;
     case 5:
-      shape.style.borderTop = '25px solid ' + color;
-      shape.style.borderRight = '25px solid transparent';
-      shape.style.borderBottom = '25px solid ' + color;
-      shape.style.borderLeft = '25px solid transparent';
+      shape.style.borderTop = '2vw solid ' + color;
+      shape.style.borderRight = '2vw solid transparent';
+      shape.style.borderBottom = '2vw solid ' + color;
+      shape.style.borderLeft = '2vw solid transparent';
       shape.style.transform = 'rotate(45deg)';
       break;
   }
