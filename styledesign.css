@@ -18,15 +18,15 @@ body{
     /* max-height: 100%; */
     display: grid;
     grid-template-columns: 100vw;
-    /* grid-template-rows: 2vh 100vh 100vh 100vh; */
-    grid-template-rows: 2vh 1fr 1fr 1fr 1fr;
+
+    /* grid-template-rows: .02fr 1fr 1fr 1fr 1fr; */
     grid-template-areas:
     "toptext"
     "container1"
     "container2"
     "container3"
     "container4";
-    grid-gap: 10vh;
+    grid-gap: 60vh;
 }
 
 .toptext{
@@ -41,7 +41,7 @@ body{
  .titlecontainer{
      grid-area: container1;
      max-width: 100vw;
-     max-height: 100vh;
+     height: 100vh;
      display: grid;
      grid-template-columns: 3fr 1fr 2fr;
      grid-template-rows: .5fr 1.5fr 2fr;
@@ -49,8 +49,8 @@ body{
      ". . ."
      "title . ."
      ". description description";
-     margin-top: -10vh;
-
+     margin-top: -60vh;
+     /* margin-bottom: 60vh; */
  }
 
 
@@ -130,10 +130,26 @@ body{
     line-height: 5vh;
 }
 
+.projtextlong{
+    font-size: 1vw;
+    align-self: center;
+    /* font-family: 'Jost', sans-serif; */
+    font-family: 'Unbounded', cursive;
+    font-weight: lighter;
+    line-height: 4vh;
+}
+
 .projlabel{
     font-size: 1.8vw;
     font-family: 'Unbounded', cursive;
     font-weight: lighter;
+    align-self: center;
+    line-height: 6vh;
+}
+
+.projectpic{
+    width: 100%;
+    justify-content: center;
     align-self: center;
 }
 
@@ -143,13 +159,20 @@ body{
     /* max-height: 500vh; */
     display: grid;
     grid-template-columns: 1fr 3fr 3fr 1fr;
-    grid-template-rows: 3fr 2fr 3fr 2fr;
+    grid-template-rows: 60vh 60vh 60vh 110vh;
     grid-template-areas:
     ". dropimage1 dropimage1 ."
     ". droplabel1 dropdesc1  ."
     ". dropimage2 dropimage2 ."
     ". droplabel2 dropdesc2  .";
-    grid-gap: 4vh;
+    /* grid-gap: 4vh; */
+}
+
+#line1{
+    grid-area: dropimage1;
+    align-self: start;
+    margin-top: -20vh;
+    font-size: 3vh;
 }
 
 /* .projectpic{
@@ -162,18 +185,19 @@ body{
 
 #dropphoto1{
     grid-area: dropimage1;
-    width: 100%;
+    /* width: 100%; */
     /* height: 60vh; */
-    justify-content: center;
+    /* justify-content: center;
+    align-self: center; */
     /* border: 1px solid black; */
 }
 
 #dropphoto2{
     grid-area: dropimage2;
-    width: 100%;
+    /* width: 100%; */
     /* height: 60vh; */
-    justify-self: center;
-    align-self: start;
+    /* justify-self: center;
+    align-self: center; */
     /* border: 1px solid black; */
 }
 
@@ -213,29 +237,42 @@ body{
     max-width: 100vw;
     /* max-height: 200vh; */
     display: grid;
-    grid-template-columns: 1fr 2fr 2fr 1fr;
-    grid-template-rows: 60vh 30vh 40vh;
+    grid-template-columns: 1fr 3fr 3fr 1fr;
+    grid-template-rows: 60vh 60vh 60vh 110vh;
     grid-template-areas:
     ". figma1 figma1 ."
-    ". . figmadesc1 ."
-    ". figma2 . .";
-    grid-gap: 6vh;
+    ". figmalabel1 figmadesc1 ."
+    ". figma2 figma2 ."
+    ". figmalabel2 figmadesc2 .";
+    /* grid-gap: 6vh; */
+}
+
+#line2{
+    grid-area: figma1;
+    align-self: start;
+    margin-top: -20vh;
+    font-size: 3vh;
 }
 
 #figma1{
     grid-area: figma1;
-    width: 78vwvw;
+    /* width: 78vw;
     height: 60vh;
     justify-content: center;
-    border: 1px solid black;
+    border: 1px solid black; */
 }
 
 #figma2{
     grid-area: figma2;
-    width: 40vw;
+    /* width: 40vw;
     height: 20vh;
     justify-content: center;
-    border: 1px solid black;
+    border: 1px solid black; */
+}
+
+#figmalabel1{
+    grid-area: figmalabel1;
+    text-align: center;
 }
 
 #figmadesc1{
@@ -243,35 +280,70 @@ body{
     align-self: center;
 }
 
+#figmalabel2{
+    grid-area: figmalabel2;
+    text-align: center;
+}
+
+#figmadesc2{
+    grid-area: figmadesc2;
+    align-self: center;
+}
+
+
 #project3{
     grid-area: container4;
     max-width: 100vw;
     display: grid;
-    grid-template-columns: 1fr 2fr 2fr 1fr;
-    grid-template-rows: 60vh 30vh 30vh;
+    grid-template-columns: 1fr 3fr 3fr 1fr;
+    grid-template-rows: 60vh 60vh 60vh 110vh;
     grid-template-areas:
     ". bsi1 bsi1 ."
-    ". . bsidesc1 ."
-    ". bsi2 . .";
-    grid-gap: 6vh;
+    ". bsilabel1 bsidesc1 ."
+    ". bsi2 bsi2 ."
+    ". bsilabel2 bsidesc2 .";
+    /* grid-gap: 6vh; */
+}
+
+#line3{
+    grid-area: bsi1;
+    align-self: start;
+    margin-top: -20vh;
+    font-size: 3vh;
 }
 
 #bsi1{
     grid-area: bsi1;
-    width: 78vw;
-    height: 60vh;
-    justify-content: center;
-    border: 1px solid black;
-}
-#bsi2{
-    grid-area: bsi2;
-    width: 30vw;
-    height: 30vh;
-    justify-content: center;
-    border: 1px solid black;
+    /* width: 100%;
+    /* height: 60vh; */
+    /* justify-content: center;
+    border: 1px solid black; */ */
 }
 
+#bsi2{
+    grid-area: bsi2;
+    /* width: 100%; */
+    /* height: 30vh; */
+    /* justify-content: center;
+    align-self: center;
+    border: 1px solid black; */
+}
+
+#bsilabel1{
+    grid-area: bsilabel1;
+    text-align: center;
+}
 
 #bsidesc1{
     grid-area: bsidesc1;
+}
+
+
+#bsilabel2{
+    grid-area: bsilabel2;
+    text-align: center;
+}
+
+#bsidesc2{
+    grid-area: bsidesc2;
 }

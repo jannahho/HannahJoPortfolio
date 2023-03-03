@@ -1,10 +1,14 @@
 // define an array of text strings to cycle through
 const textArray = [
-  "Loves Design",
-  "Is Researching...",
-  "Wants to Bring Fun",
-  "Is Cool",
-  "Needfinding"
+  "Love Design",
+  "Create Experiences",
+  "Research Needs",
+  "Bring Fun",
+  "Practice Imagination",
+  "Explore Always",
+  "Be Cool"
+
+
 ];
 
 // get a reference to the text element
@@ -104,12 +108,26 @@ animate();
 
 // ((((&U*^Y*&^*&*))))
 
+shape1 = document.getElementById("redtriangle");
+shape2 = document.getElementById("greenrectangle");
+shape3 = document.getElementById("bluecircle");
+let pg = document.getElementById('playground').getBoundingClientRect();
+shape1.style.left = (pg.width * .54 + pg.left).toString() + 'px';
+shape2.style.left = (pg.width * .73 + pg.left).toString() + 'px';
+shape3.style.left = (pg.width * .63 + pg.left).toString() + 'px';
+shape1.style.top = (pg.height * .57 + pg.top).toString() + 'px';
+shape2.style.top = (pg.height * .52 + pg.top).toString() + 'px';
+shape3.style.top = (pg.height * .28 + pg.top).toString() + 'px';
+
 // document.getElementById("redtriangle").addEventListener("click", dragElement);
-dragElement(document.getElementById("redtriangle"));
-dragElement(document.getElementById("greenrectangle"));
-dragElement(document.getElementById("bluecircle"));
+dragElement(shape1);
+dragElement(shape2);
+dragElement(shape3);
 
 
+// redtriangle 0.54 0.72
+// greenrectangle 0.73 0.66
+// bluecircle 0.63 0.32
 
 function dragElement(elmnt) {
     // pick up shape from anywhere inside the shape
@@ -117,12 +135,8 @@ function dragElement(elmnt) {
         pos2 = 0,
         pos3 = 0,
         pos4 = 0;
-    var containerRect = document.getElementById('playground').getBoundingClientRect();
-    var playground_x = containerRect.x;
-    var playground_y = containerRect.y;
-    var playground_w = containerRect.width;
-    var playground_h = containerRect.height;
-    // console.log(playground_x + " " + playground_y);
+
+
     if (document.getElementById(elmnt.id)) {
         document.getElementById(elmnt.id).onmousedown = dragMouseDown;
     } else {
@@ -151,7 +165,13 @@ function dragElement(elmnt) {
         var elem_x = elementRect.x;
         var elem_w = elementRect.width;
         var elem_h = elementRect.height;
-        console.log(playground_x + " " + playground_y + " " + elem_x + " " + elem_y)
+
+        var containerRect = document.getElementById('playground').getBoundingClientRect();
+        var playground_x = containerRect.x;
+        var playground_y = containerRect.y;
+        var playground_w = containerRect.width;
+        var playground_h = containerRect.height;
+
         pos1 = pos3 - e.clientX;
         pos2 = pos4 - e.clientY;
         pos3 = e.clientX;
@@ -176,8 +196,37 @@ function dragElement(elmnt) {
     }
 }
 
-// add a new shape !!!!!!!!!!!!!!!!!!!!!!
+function moveElementAlongWithPlayground(elem, pg) {
+  elemBox = elem.getBoundingClientRect();
+  if (elemBox.x + elemBox.width > pg.x + pg.width) {
+    elem.style.left = (pg.x + pg.width - elemBox.width).toString() + 'px';
+  }
+  if (elemBox.y + elemBox.height > pg.y + pg.height) {
+    elem.style.top = (pg.y + pg.height - elemBox.height).toString() + 'px';
+  }
+  if (elemBox.x < pg.x) {
+    elem.style.left = pg.x + 'px'
+  }
+  if (elemBox.y < pg.y) {
+    elem.style.top = pg.y + 'px'
+  }
 
+  // console.log(elem.id + ' ' + (elemBox.x - pg.x) / pg.width + ' ' + (elemBox.y - pg.y) / pg.height);
+
+}
+
+
+
+window.addEventListener('resize', function(event) {
+  let playgroundRect = document.getElementById('playground').getBoundingClientRect();
+  let elements = document.querySelectorAll("[class='shape']");
+
+  for (let elem of elements) {
+    moveElementAlongWithPlayground(elem, playgroundRect);
+  }
+}, true);
+
+// add a new shape !!!!!!!!!!!!!!!!!!!!!!
 // Select the container element
 const container2 = document.querySelector('.playground');
 
@@ -209,7 +258,7 @@ function addShape(event) {
   }
 
   // Create a new shape element with a random color and number of sides
-  const sides = Math.floor(Math.random() * 6);
+  let sides = Math.floor(Math.random() * 8);
   const color = '#' + Math.floor(Math.random() * 16777215).toString(16);
   const shape = document.createElement('div');
   shape.classList.add('shape');
@@ -246,15 +295,44 @@ function addShape(event) {
       shape.style.borderLeft = '50px solid transparent';
       break;
     case 5:
-      shape.style.borderTop = '2vw solid ' + color;
-      shape.style.borderRight = '2vw solid transparent';
-      shape.style.borderBottom = '2vw solid ' + color;
-      shape.style.borderLeft = '2vw solid transparent';
-      shape.style.transform = 'rotate(45deg)';
+      shape.style.width = 0;
+	    shape.style.height = 0;
+      shape.style.backgroundColor = 'transparent';
+      shape.style.borderTop= '0vw solid transparent';
+      shape.style.borderRight= '10vw solid' + '#' + Math.floor(Math.random() * 16777215).toString(16);;
+      shape.style.borderBottom= '8vw solid transparent';
       break;
+    case 6:
+      shape.style.width = 0;
+	    shape.style.height = 0;
+      shape.style.backgroundColor = 'transparent';
+      shape.style.borderTop= '0vw solid transparent';
+      shape.style.borderRight= '8vw solid' + '#' + Math.floor(Math.random() * 16777215).toString(16);;
+      shape.style.borderBottom= '8vw solid transparent';
+      shape.style.transform = 'rotate(90deg)';
+      break;
+    case 7:
+      shape.style.transform = 'skew(20deg)';
   }
 
   container2.appendChild(shape);
+
+  shapeRect = shape.getBoundingClientRect();
+
+  pgRect = document.getElementById('playground').getBoundingClientRect()
+
+  if (shapeRect.bottom > pgRect.bottom) {
+    shape.style.top = (pgRect.bottom - shapeRect.height).toString() + 'px';
+  }
+  if (shapeRect.right > pgRect.right) {
+    shape.style.left = (pgRect.right - shapeRect.width).toString() + 'px';
+  }
+  if (shapeRect.top < pgRect.top) {
+    shape.style.top = pgRect.top.toString() + 'px';
+  }
+  if (shapeRect.left < pgRect.left) {
+    shape.style.left = pgRect.left.toString() + 'px';
+  }
 
   // Make the new shape draggable
   dragElement(shape);
