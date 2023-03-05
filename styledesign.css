@@ -153,6 +153,11 @@ body{
     align-self: center;
 }
 
+.projectvid{
+    height: 100%;
+    /* justify-content: start; */
+}
+
 #project1{
     grid-area: container2;
     max-width: 100vw;
@@ -242,7 +247,7 @@ body{
     grid-template-areas:
     ". figma1 figma1 ."
     ". figmalabel1 figmadesc1 ."
-    ". figma2 figma2 ."
+    ". figma2 figma25 ."
     ". figmalabel2 figmadesc2 .";
     /* grid-gap: 6vh; */
 }
@@ -264,10 +269,17 @@ body{
 
 #figma2{
     grid-area: figma2;
+
     /* width: 40vw;
     height: 20vh;
     justify-content: center;
     border: 1px solid black; */
+}
+
+#figma25{
+    grid-area: figma25;
+    justify-content: start;
+    margin-left: -20vw;
 }
 
 #figmalabel1{
