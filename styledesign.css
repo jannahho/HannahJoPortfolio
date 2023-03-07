@@ -171,6 +171,7 @@ body{
     ". dropimage2 dropimage2 ."
     ". droplabel2 dropdesc2  .";
     /* grid-gap: 4vh; */
+    grid-row-gap: 11vh;
 }
 
 #line1{
@@ -247,9 +248,9 @@ body{
     grid-template-areas:
     ". figma1 figma1 ."
     ". figmalabel1 figmadesc1 ."
-    ". figma2 figma25 ."
+    ". figmavid figma2 ."
     ". figmalabel2 figmadesc2 .";
-    /* grid-gap: 6vh; */
+    grid-row-gap: 11vh;
 }
 
 #line2{
@@ -267,8 +268,8 @@ body{
     border: 1px solid black; */
 }
 
-#figma2{
-    grid-area: figma2;
+#figmavid{
+    grid-area: figmavid;
 
     /* width: 40vw;
     height: 20vh;
@@ -276,8 +277,8 @@ body{
     border: 1px solid black; */
 }
 
-#figma25{
-    grid-area: figma25;
+#figma2{
+    grid-area: figma2;
     justify-content: start;
     margin-left: -20vw;
 }
@@ -313,8 +314,10 @@ body{
     ". bsi1 bsi1 ."
     ". bsilabel1 bsidesc1 ."
     ". bsi2 bsi2 ."
-    ". bsilabel2 bsidesc2 .";
-    /* grid-gap: 6vh; */
+    ". bsilabel2 bsidesc2 ."
+    ". bsivid2 bsivid2desc .";
+    grid-row-gap: 11vh;
+    margin-bottom: 20vh;
 }
 
 #line3{
@@ -326,19 +329,35 @@ body{
 
 #bsi1{
     grid-area: bsi1;
-    /* width: 100%;
-    /* height: 60vh; */
-    /* justify-content: center;
-    border: 1px solid black; */ */
+    background: "bsicover.png";
+    display: grid;
+    width: 100%;
+    position: relative;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr;
 }
+
+#bsi1>img{
+    /* grid-row: span 1; */
+    grid-column: span 2;
+    width: 100%;
+}
+
+
+
+
+#bsivid1{
+    grid-column: span 2;
+    justify-self: end;
+    align-self: center;
+    height: 60%;
+    position: absolute;
+    margin-right: 25%;
+}
+
 
 #bsi2{
     grid-area: bsi2;
-    /* width: 100%; */
-    /* height: 30vh; */
-    /* justify-content: center;
-    align-self: center;
-    border: 1px solid black; */
 }
 
 #bsilabel1{
@@ -358,4 +377,30 @@ body{
 
 #bsidesc2{
     grid-area: bsidesc2;
+}
+
+#bsivid2{
+    grid-area: bsivid2;
+    justify-self: start;
+    align-self: center;
+    /* position: absolute; */
+    /* height: 60%; */
+    width: 100%;
+
+}
+
+#bsivid2desc{
+    grid-area: bsivid2desc;
+    padding: 2vw;
+}
+
+#bsiscreenlabel{
+    grid-area: bsivid2;
+    justify-self: start;
+    font-size: 1.5vw;
+    font-style: italic;
+    color: grey;
+    align-self: end;
+    margin-bottom: 24%;
+    padding: 1vh;
 }

@@ -11,6 +11,8 @@ const textArray = [
 
 ];
 
+
+
 // get a reference to the text element
 const textElement = document.getElementById("subtitle");
 
@@ -29,19 +31,19 @@ setInterval(changeText, 3000);
 
 // button drop down
 function myFunction() {
-document.getElementById("myDropdown").classList.toggle("show");
+  document.getElementById("myDropdown").classList.toggle("show");
 }
 window.onclick = function(event) {
-if (!event.target.matches('.dropbtn')) {
-  var dropdowns = document.getElementsByClassName("dropdown-content");
-  var i;
-  for (i = 0; i < dropdowns.length; i++) {
-    var openDropdown = dropdowns[i];
-    if (openDropdown.classList.contains('show')) {
-      openDropdown.classList.remove('show');
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
     }
   }
-}
 }
 
 
@@ -55,9 +57,27 @@ const ballSize = balls[0].clientWidth;
 const speed = 3;
 const maxSpeed = 5;
 
-let ballPositions = [  { x: 0, y: 0 },  { x: ballSize * 2, y: ballSize },  { x: ballSize * 4, y: ballSize * 2 },];
+let ballPositions = [{
+  x: 0,
+  y: 0
+}, {
+  x: ballSize * 2,
+  y: ballSize
+}, {
+  x: ballSize * 4,
+  y: ballSize * 2
+}, ];
 
-let ballVelocities = [  { x: speed, y: speed },  { x: speed, y: -speed },  { x: -speed, y: speed },];
+let ballVelocities = [{
+  x: speed,
+  y: speed
+}, {
+  x: speed,
+  y: -speed
+}, {
+  x: -speed,
+  y: speed
+}, ];
 
 function animate() {
   balls.forEach((ball, ballIndex) => {
@@ -108,114 +128,163 @@ animate();
 
 // ((((&U*^Y*&^*&*))))
 
+let shape2Positions = {};
 shape1 = document.getElementById("redtriangle");
 shape2 = document.getElementById("greenrectangle");
 shape3 = document.getElementById("bluecircle");
 let pg = document.getElementById('playground').getBoundingClientRect();
+console.log('pg:' + pg);
+
+
+// document.getElementById("redtriangle").addEventListener("click", dragElement);
+
+
+
+let INITIAL_SHAPE_OFFSET_PCT = .75
+// shape2.style.top = (pg.bottom - shape2.getBoundingClientRect().height).toString() + 'px'
+// shape2.style.left = ((pg.width * INITIAL_SHAPE_OFFSET_PCT) + pg.left).toString() + 'px'
+
+// shape1.style.top = (pg.bottom - shape1.getBoundingClientRect().height).toString() + 'px'
+// shape1.style.left = (parseInt(shape2.style.left, 10) -  shape2.getBoundingClientRect().width - shape1.getBoundingClientRect().width).toString() + 'px'
+
+// shape3.style.top = (1 + pg.bottom - 2.1 * shape2.getBoundingClientRect().height).toString() + 'px'
+// shape3.style.left = (parseInt(shape2.style.left, 10) - 1.5 * shape2.getBoundingClientRect().width).toString() + 'px'
+
+// shape2.style.top = (pg.bottom).toString() + 'px'
+// shape1.style.top = (pg.bottom).toString() + 'px'
+// shape3.style.top = (pg.bottom).toString() + 'px'
+
 shape1.style.left = (pg.width * .54 + pg.left).toString() + 'px';
 shape2.style.left = (pg.width * .73 + pg.left).toString() + 'px';
 shape3.style.left = (pg.width * .63 + pg.left).toString() + 'px';
 shape1.style.top = (pg.height * .57 + pg.top).toString() + 'px';
 shape2.style.top = (pg.height * .52 + pg.top).toString() + 'px';
-shape3.style.top = (pg.height * .28 + pg.top).toString() + 'px';
+shape3.style.top = (pg.height * .25 + pg.top).toString() + 'px';
 
-// document.getElementById("redtriangle").addEventListener("click", dragElement);
+shape2Positions['redtriangle'] = getCenterCoordinatesAsPctOfPlayground(shape1.getBoundingClientRect(), pg);
+shape2Positions['greenrectangle'] = getCenterCoordinatesAsPctOfPlayground(shape2.getBoundingClientRect(), pg);
+shape2Positions['bluecircle'] = getCenterCoordinatesAsPctOfPlayground(shape3.getBoundingClientRect(), pg);
+
+
 dragElement(shape1);
 dragElement(shape2);
 dragElement(shape3);
 
 
-// redtriangle 0.54 0.72
-// greenrectangle 0.73 0.66
-// bluecircle 0.63 0.32
+let scrollLeft = 0;
+let scrollTop = 0;
+window.onscroll = function() {
+  recordScrollPosition()
+};
+
+function recordScrollPosition() {
+  scrollLeft = (window.pageXOffset !== undefined) ? window.pageXOffset : (document.documentElement || document.body.parentNode || document.body).scrollLeft;
+  scrollTop = (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop;
+}
+
 
 function dragElement(elmnt) {
-    // pick up shape from anywhere inside the shape
-    var pos1 = 0,
-        pos2 = 0,
-        pos3 = 0,
-        pos4 = 0;
+  if (document.getElementById(elmnt.id)) {
+    document.getElementById(elmnt.id).onmousedown = dragMouseDown;
+  } else {
+    elmnt.onmousedown = dragMouseDown;
+  }
+  let mouseOffsetX;
+  let mouseOffsetY;
 
 
-    if (document.getElementById(elmnt.id)) {
-        document.getElementById(elmnt.id).onmousedown = dragMouseDown;
+  function dragMouseDown(e) {
+    // call location of cursor on screen
+    e = e || window.event;
+    e.preventDefault();
+    console.log('reached here');
+
+    var elementRect = elmnt.getBoundingClientRect();
+
+    mouseOffsetX = e.clientX - elementRect.x - scrollLeft;
+    mouseOffsetY = e.clientY - elementRect.y - scrollTop;
+
+    // do function when cursor is moved
+
+    document.onmouseup = closeDragElement;
+    document.onmousemove = elementDrag;
+  }
+
+  function elementDrag(e) {
+    // call new cursor location
+
+    e = e || window.event;
+    e.preventDefault();
+    var elementRect = elmnt.getBoundingClientRect();
+    var elem_w = elementRect.width;
+    var elem_h = elementRect.height;
+
+    var pgBox = document.getElementById('playground').getBoundingClientRect();
+    var playground_x = pgBox.x;
+    var playground_y = pgBox.y;
+    var playground_w = pgBox.width;
+    var playground_h = pgBox.height;
+
+    var newElemTop = e.clientY - mouseOffsetY;
+    var newElemLeft = e.clientX - mouseOffsetX;
+
+    if (newElemTop >= playground_y + scrollTop &&
+      newElemLeft >= playground_x + scrollLeft &&
+      newElemTop + elem_h <= playground_y + playground_h + scrollTop &&
+      newElemLeft + elem_w <= playground_x + playground_w + scrollLeft) {
+      elmnt.style.top = newElemTop.toString() + 'px';
+      elmnt.style.left = newElemLeft.toString() + 'px';
     } else {
-        elmnt.onmousedown = dragMouseDown;
+      console.log('skipping moving.')
     }
 
+    shape2Positions[elmnt.id] = getCenterCoordinatesAsPctOfPlayground(elementRect, pgBox);
+  }
 
-    function dragMouseDown(e) {
-        // call location of cursor on screen
-        e = e || window.event;
-        e.preventDefault();
-        pos3 = e.clientX;
-        pos4 = e.clientY;
-        // do function when cursor is moved
+  function closeDragElement() {
+    // release shape when click is released
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
+}
 
-        document.onmouseup = closeDragElement;
-        document.onmousemove = elementDrag;
-    }
-
-    function elementDrag(e) {
-        // call new cursor location
-        e = e || window.event;
-        e.preventDefault();
-        var elementRect = elmnt.getBoundingClientRect();
-        var elem_y = elementRect.y;
-        var elem_x = elementRect.x;
-        var elem_w = elementRect.width;
-        var elem_h = elementRect.height;
-
-        var containerRect = document.getElementById('playground').getBoundingClientRect();
-        var playground_x = containerRect.x;
-        var playground_y = containerRect.y;
-        var playground_w = containerRect.width;
-        var playground_h = containerRect.height;
-
-        pos1 = pos3 - e.clientX;
-        pos2 = pos4 - e.clientY;
-        pos3 = e.clientX;
-        pos4 = e.clientY;
-        // put shape in new cursor location
-
-        temp_x = (elmnt.offsetLeft - pos1);
-        temp_y = (elmnt.offsetTop - pos2);
-
-        if (temp_y < playground_y || temp_x < playground_x || temp_x + elem_w > playground_x + playground_w || temp_y + elem_h > playground_y + playground_h) {
-
-        } else {
-            elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-            elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-        }
-    }
-
-    function closeDragElement() {
-        // release shape when click is released
-        document.onmouseup = null;
-        document.onmousemove = null;
-    }
+function getCenterCoordinatesAsPctOfPlayground(elembox, pgbox) {
+  var x = (elembox.left + elembox.width / 2 - pgbox.left) / pgbox.width;
+  var y = (elembox.top + elembox.height / 2 - pgbox.top) / pgbox.height;
+  return [x, y];
 }
 
 function moveElementAlongWithPlayground(elem, pg) {
   elemBox = elem.getBoundingClientRect();
+
+  // console.log('made it here');
+  var idealCoordinates = shape2Positions[elem.id];
+  var idealX = idealCoordinates[0] * pg.width + pg.left;
+  var idealY = idealCoordinates[1] * pg.height + pg.top;
+
+  var idealXCorner = idealX - elemBox.width / 2;
+  var idealYCorner = idealY - elemBox.height / 2;
+
+  elem.style.left = idealXCorner + 'px'
+  elem.style.top = idealYCorner + 'px'
+
   if (elemBox.x + elemBox.width > pg.x + pg.width) {
+    console.log('bad1');
     elem.style.left = (pg.x + pg.width - elemBox.width).toString() + 'px';
   }
   if (elemBox.y + elemBox.height > pg.y + pg.height) {
+    console.log('bad2');
     elem.style.top = (pg.y + pg.height - elemBox.height).toString() + 'px';
   }
   if (elemBox.x < pg.x) {
+    console.log('bad3');
     elem.style.left = pg.x + 'px'
   }
   if (elemBox.y < pg.y) {
+    console.log('bad4');
     elem.style.top = pg.y + 'px'
   }
-
-  // console.log(elem.id + ' ' + (elemBox.x - pg.x) / pg.width + ' ' + (elemBox.y - pg.y) / pg.height);
-
 }
-
-
 
 window.addEventListener('resize', function(event) {
   let playgroundRect = document.getElementById('playground').getBoundingClientRect();
@@ -232,6 +301,8 @@ const container2 = document.querySelector('.playground');
 
 // Add a click event listener to the container
 container2.addEventListener('click', addShape);
+
+let newShapesMade = 0;
 
 function addShape(event) {
   // Get the coordinates of the click event
@@ -256,11 +327,12 @@ function addShape(event) {
       return;
     }
   }
-
+  newShapesMade += 1;
   // Create a new shape element with a random color and number of sides
   let sides = Math.floor(Math.random() * 8);
   const color = '#' + Math.floor(Math.random() * 16777215).toString(16);
   const shape = document.createElement('div');
+  shape.setAttribute('id', 'randomShape' + newShapesMade.toString());
   shape.classList.add('shape');
   shape.style.backgroundColor = color;
   shape.style.width = '4vw';
@@ -296,19 +368,19 @@ function addShape(event) {
       break;
     case 5:
       shape.style.width = 0;
-	    shape.style.height = 0;
+      shape.style.height = 0;
       shape.style.backgroundColor = 'transparent';
-      shape.style.borderTop= '0vw solid transparent';
-      shape.style.borderRight= '10vw solid' + '#' + Math.floor(Math.random() * 16777215).toString(16);;
-      shape.style.borderBottom= '8vw solid transparent';
+      shape.style.borderTop = '0vw solid transparent';
+      shape.style.borderRight = '10vw solid' + '#' + Math.floor(Math.random() * 16777215).toString(16);;
+      shape.style.borderBottom = '8vw solid transparent';
       break;
     case 6:
       shape.style.width = 0;
-	    shape.style.height = 0;
+      shape.style.height = 0;
       shape.style.backgroundColor = 'transparent';
-      shape.style.borderTop= '0vw solid transparent';
-      shape.style.borderRight= '8vw solid' + '#' + Math.floor(Math.random() * 16777215).toString(16);;
-      shape.style.borderBottom= '8vw solid transparent';
+      shape.style.borderTop = '0vw solid transparent';
+      shape.style.borderRight = '8vw solid' + '#' + Math.floor(Math.random() * 16777215).toString(16);;
+      shape.style.borderBottom = '8vw solid transparent';
       shape.style.transform = 'rotate(90deg)';
       break;
     case 7:
@@ -333,6 +405,8 @@ function addShape(event) {
   if (shapeRect.left < pgRect.left) {
     shape.style.left = pgRect.left.toString() + 'px';
   }
+
+  shape2Positions[shape.id] = getCenterCoordinatesAsPctOfPlayground(shapeRect, pgRect);
 
   // Make the new shape draggable
   dragElement(shape);
