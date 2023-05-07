@@ -8,14 +8,20 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Shadows+Into+Light&display=swap');
+
 
 body{
-     background-color: #fcf5f8;
+    /* pink */
+     /* background-color: #fcf5f8; */
+
+     /* yellow */
+     background-color: #fffff2;
  }
 
 .maincontainer{
-    max-width: 100vw;
-    min-width: 100vw;
+    max-width: 99vw;
+    min-width: 99vw;
     display: grid;
     grid-template-columns: 1fr 5fr 1fr;
     grid-template-areas:
@@ -30,37 +36,12 @@ body{
     grid-gap: 20vh;
 }
 
-/* .maincontainer {
-  display: grid;
-  width: 100vw;
-  height:100vh;
-  grid-template-columns: 1fr 2fr 1fr;
-  grid-template-rows: 95vh; repeat(3, 1fr) 3vh repeat(5,1fr);
-  grid-template-areas:
-    "photo photo photo"
-    ". video1 ."
-    ". video2 ."
-    ". video3 ."
-    "divider divider divider"
-    ". video4 ."
-    ". video5 ."
-    ". video6 ."
-    ". video7 .";
-  row-gap: 17%;
-} */
 
-.toptext{
-    grid-area: toptext;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    position: sticky;
-    top: 0;
-}
+
 
  .titlecontainer{
      grid-area: container1;
-     max-width: 100vw;
+     max-width: 99vw;
      height: 100vh;
      display: grid;
      grid-template-columns: 3fr 1fr 2fr;
@@ -73,22 +54,67 @@ body{
      /* margin-bottom: 60vh; */
  }
 
- .smallicons>img{
-     height: 1.5vw;
+ .toptext{
+     grid-area: toptext;
+     display: flex;
+     flex-direction: row;
+     justify-content: space-between;
+     position: sticky;
+     top: 0;
+ }
+
+
+ #Xdropbtn{
+     background: none;
+     border: none;
+     display: block;
+     font-size: 3.9vh;
+     word-spacing: .7vw;
+     font-family: 'Kalam', cursive;
+     margin-top: -.5vw;
+ }
+
+ #Xdropbtn:hover{
+     cursor: grab;
+ }
+
+ .Xdropdown-content{
+     display: none;
+     color: black;
+     font-size: 1vw;
+     text-decoration: none;
      padding: .5vw;
      margin-top: -.4vw;
-     margin-right: .9vw;
-     align-self: start;
-}
 
- .name{
-     font-size: 1.5vw;
+     word-spacing: .02vw;
+     text-align: right;
+     line-height: 4vh;
+
+     width: 10vw;
+     right: 0;
+
+ }
+ .Xdropdown-content > a{
      color: black;
-     font-family: 'Montserrat', sans-serif;
-     align-self: start;
      text-decoration: none;
-     margin-left: .5vw;
-}
+     font-family: 'Jost', sans-serif;
+ }
+
+ .showX {
+     display: block;
+     position: absolute;
+ }
+
+  .name{
+      font-size: 1.5vw;
+      color: black;
+      font-family: 'Montserrat', sans-serif;
+      align-self: start;
+      text-decoration: none;
+       margin-left: .5vw;
+ }
+
+
 
 .title{
    grid-area: title;

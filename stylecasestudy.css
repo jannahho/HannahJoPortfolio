@@ -1,0 +1,445 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Jost&family=Kanit:wght@300;400&family=Poppins&family=Unbounded:wght@300;500&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
+
+@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Libre+Baskerville:wght@400;700&family=Shadows+Into+Light&display=swap');
+body{
+    /* background-color: #fcf5f8; */
+    background-color: #fffff2;
+}
+
+.maincontainer{
+    /* background-color: #fcf5f8; */
+    background-color: #fffff2;
+
+
+    max-width: 99vw;
+    min-width: 99vw;
+    min-height: 100%;
+    display: grid;
+   /* background-color: #ffd6e7;
+    */
+    margin-left: auto;
+    margin-right: auto;
+
+    grid-template-columns: 100%;
+    grid-template-areas:
+    "toptext"
+    "everythingelse";
+
+    /* grid-gap: 10vh; */
+}
+
+.toptext{
+   grid-area: toptext;
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   position: sticky;
+   top: 0;
+   z-index: 2;
+}
+
+
+#Xdropbtn{
+   background: none;
+   border: none;
+   display: block;
+   font-size: 3.9vh;
+   word-spacing: .7vw;
+   font-family: 'Kalam', cursive;
+   margin-top: -.5vw;
+
+}
+
+#Xdropbtn:hover{
+   cursor: grab;
+}
+
+.Xdropdown-content{
+   display: none;
+   color: black;
+   font-size: 1vw;
+   text-decoration: none;
+   padding: .5vw;
+   margin-top: -.4vw;
+
+   word-spacing: .02vw;
+   text-align: right;
+   line-height: 4vh;
+
+   width: 10vw;
+   right: 0;
+
+
+}
+.Xdropdown-content > a{
+   color: black;
+   text-decoration: none;
+   font-family: 'Jost', sans-serif;
+}
+
+.showX {
+   display: block;
+   position: absolute;
+}
+
+.name{
+    font-size: 1.5vw;
+    color: black;
+    font-family: 'Montserrat', sans-serif;
+    align-self: start;
+    text-decoration: none;
+     margin-left: .5vw;
+}
+
+
+
+.overview{
+
+    /* grid-template-columns: 2fr 1fr;
+    grid-template-rows:
+    grid-template-areas:
+    "title title"
+    "everythingelse"; */
+    max-width: 99vw;
+    margin-top: 10vh;
+    font-family: 'Montserrat', sans-serif;
+
+    color: black;
+    margin-top: 10vh;
+    /* padding-top: 20vh; */
+    position: relative;
+    margin-bottom: 10vh;
+
+    /* border-top-style: dotted;
+    border-top-width: thick;
+    border-color: black; */
+
+    display: grid;
+    margin-left: 7vw;
+    margin-right: 7vw;
+
+    padding-bottom: 0;
+    z-index: 0;
+    /* height: 40vh; */
+}
+
+.overview > img{
+    /* width: 45vw; */
+    height: 100%;
+    /* justify-content: center; */
+    /* padding-left: 40vw; */
+    justify-self: end;
+    /* margin-right: 10vw; */
+    position: absolute;
+    /* margin-top: 14vh; */
+
+    align-self: center;
+    z-index: -1;
+
+}
+
+.headtitle{
+    align-self: start;
+}
+
+#bigtitle{
+    font-size: 3.3vw;
+    /* position: absolute; */
+    /* padding-top: 3vh; */
+    padding-left: 5vw;
+    /* align-self: start; */
+    word-spacing: .2vw;
+    margin-bottom: 0;
+}
+
+#liltitle{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2vw;
+    color: grey;
+    padding-left: 5vw;
+    word-spacing: .2vw;
+    /* align-self: start; */
+    margin-top: 0;
+    padding-bottom: 23vh;
+}
+
+#subtext{
+    font-size: 1.2vw;
+    color: grey;
+    padding-left: 5vw;
+    margin-bottom: -.2vh;
+    padding-top: 10vh;
+    align-self: end;
+    letter-spacing: .08vw;
+    word-spacing: .2vw;
+    line-height: 4vh;
+
+}
+
+#challengesub{
+    color: grey;
+    padding-bottom: 10vh;
+}
+
+#challenge > img{
+    width: 100%;
+    align-self: center;
+}
+
+
+
+.section{
+    font-family: 'Montserrat', sans-serif;
+    /* grid-area: everythingelse; */
+    max-width: 90vw;
+	margin-bottom: 10vh;
+    display: grid;
+    margin-left: 12vw;
+    margin-right: 12vw;
+
+
+    /* border-top-style: dashed;
+    border-top-width: thin;
+    border-color: black; */
+    /* height: 80vh; */
+    /* background-color: white; */
+}
+
+.title{
+    font-family: 'Montserrat', sans-serif;
+    /* font-family: 'Libre Baskerville', serif; */
+    align-self: start;
+    font-size: 2vw;
+    font-weight: bolder;
+    margin-bottom: 0;
+    color: #8CC873;
+
+}
+
+.subtitle{
+    color: grey;
+    margin-top: 1.5vh;
+    font-size: 1.6vw;
+    font-weight: lighter;
+    padding-bottom: 3vh;
+}
+
+.regtext{
+    font-size: 1vw;
+    line-height: 4vh;
+
+}
+
+.indenttitle{
+    padding-left: 6vw;
+    /* line-height: 4vh; */
+    font-size: 1.4vw;
+
+}
+
+.indenttext{
+    padding-left: 6vw;
+    line-height: 4vh;
+    font-size: 1vw;
+    margin-top: 3vh;
+    padding-right: 6vw;
+}
+
+.ideateindenttext{
+    padding-left: 6vw;
+    line-height: 4vh;
+    font-size: 1vw;
+    margin-top: -2vh;
+    padding-right: 6vw;
+}
+
+#keyblock{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* grid-template-rows: .2fr 3fr; */
+    grid-template-areas:
+    "text image"
+    "subtext image";
+    /* grid-row-gap: 2vh; */
+    margin-top: 5vh;
+}
+
+#keyinsights{
+    grid-area: subtext;
+    line-height: 5.5vh;
+    font-size: 1vw;
+
+    padding-right: 2vw;
+
+}
+
+#keytitle{
+    color: grey;
+    grid-area: text;
+    margin-bottom: -10vh;
+}
+
+#researchimg{
+    grid-area: image;
+    width: 100%;
+    justify-self: end;
+}
+
+
+#conceptsketchblock{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* grid-template-rows: .2fr 3fr; */
+    grid-template-areas:
+    "ctext cimage"
+    "ctext cimage";
+
+    margin-top: 5vh;
+    margin-bottom: 10vh;
+}
+
+#conceptsketchimg{
+    grid-area: cimage;
+    width: 100%;
+}
+
+#conceptsketchtitle{
+    grid-area: ctext;
+    padding-left: 6vw;
+    align-self: center;
+    padding-bottom: 20vh;
+    /* width: 100%; */
+}
+
+#conceptsketchsub{
+    grid-area: ctext;
+    padding-top: 10vh;
+    align-self: center;
+    /* width: 50vw; */
+}
+
+.concepttestimgs{
+    width: 100%;
+}
+
+.image{
+    width: 100%;
+}
+
+#concepttestblock{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* grid-template-rows: .2fr 3fr; */
+    grid-template-areas:
+    "contesttext contestimage";
+
+    margin-top: 5vh;
+    margin-bottom: 10vh;
+}
+
+#concepttestimg{
+    grid-area: contestimage;
+    width: 100%;
+}
+
+#concepttesttext{
+    grid-area: contesttext;
+    padding-left: 6vw;
+    align-self: center;
+    /* padding-bottom: 20vh; */
+    /* width: 100%; */
+}
+
+#CMFpic{
+    margin-bottom: 10vh;
+}
+#finalprotoblock{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    /* grid-template-rows: .2fr 3fr; */
+    grid-template-areas:
+    "proto1 vid proto2";
+
+    margin-top: 5vh;
+    /* margin-bottom: 10vh; */
+
+
+}
+#sweepvid{
+    grid-area: vid;
+    height: 40vh;
+    justify-self: center;
+}
+
+#physproto1{
+    grid-area: proto1;
+    height: 40vh;
+    justify-self: center;
+
+}
+
+#physproto2{
+    grid-area: proto2;
+    height: 40vh;
+    justify-self: center;
+}
+
+
+#finalrenderblock{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* grid-template-rows: .2fr 3fr; */
+    grid-template-areas:
+    "renderdesc gif render";
+
+    margin-top: 5vh;
+    margin-bottom: 10vh;
+}
+
+#sweepgif{
+    grid-area: gif;
+    height: 40vh;
+}
+
+#sweeprender{
+    grid-area: render;
+    height: 40vh;
+}
+
+#rendertext{
+    grid-area: renderdesc;
+    align-self: center;
+    width: 50%;
+}
+
+#finaldesc{
+    color: grey;
+    font-size: 1.2vw;
+}
+
+
+.image-grid {
+
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(3vw, 1fr));
+	grid-gap: 2vw;
+	margin-top: 4vh;
+    width: 100%;
+    margin-bottom: 2vh;
+
+}
+
+
+
+.image-grid img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+}
