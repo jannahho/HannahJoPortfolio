@@ -56,6 +56,8 @@ body{
     word-spacing: .7vw;
     font-family: 'Kalam', cursive;
     margin-top: -.5vw;
+
+    color: black;
 }
 
 #Xdropbtn:hover{
@@ -123,6 +125,7 @@ body{
      */
      font-family: 'Jost', sans-serif;
      /* font-weight: 200; */
+     color: black;
 }
  .categories>a{
      color: black;
